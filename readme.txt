@@ -188,3 +188,4 @@ Summary
 
 TrackRNN is a general-purpose, research-oriented anomaly detector built on GRU predictive modeling.
 With CAS scoring, spectral drift detection, percentile thresholds, and synthetic anomaly benchmarking, it provides a powerful foundation for analyzing any continuous signal.
+
