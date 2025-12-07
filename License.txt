@@ -1,0 +1,67 @@
+TrackRNN Proprietary License (2025)
+
+
+
+Copyright (c) 2025 Mukunth TN All Rights Reserved.
+
+TrackRNN — including its source code, models, training pipeline, anomaly-scoring logic (CAS + SDF), synthetic injection scripts, graphs, and documentation (collectively, the “Software”) — is proprietary and confidential.
+
+This Software incorporates novel RNN-based predictive modeling techniques, Composite Anomaly Scoring (CAS), and domain-specific audio analysis logic developed as part of an independent research project by Mukunth T N.
+
+NOTICE
+
+All information contained herein is and remains the property of Mukunth T N.
+The intellectual and technical concepts contained within the Software are proprietary, may be protected by copyright, and may constitute trade secrets or patentable innovations.
+
+Unauthorized use is strictly prohibited.
+
+RESTRICTIONS
+1. Usage Restrictions
+
+You may NOT, without explicit written permission from the author:
+
+Use, copy, or distribute the Software.
+
+Modify, merge, fork, or create derivative works.
+
+Publish or share this Software publicly.
+
+Include the Software in academic, commercial, or research systems.
+
+Upload the model weights, training outputs, or codebase to public repositories.
+
+2. Reverse Engineering
+
+You may NOT reverse engineer, analyze internal architecture, decompile, or extract logic from the Software, including anomaly thresholds, RNN weights, or CAS computation formulas.
+
+3. Warranty Disclaimer
+
+The Software is provided “AS IS”, without warranty of any kind, express or implied, including but not limited to:
+
+Merchantability
+
+Fitness for a particular purpose
+
+Non-infringement
+
+The author assumes no responsibility for any damages arising from the use of this Software.
+
+4. Liability Limitation
+
+In no event shall the author be liable for any direct, indirect, incidental, or consequential damages arising from or in connection with:
+
+Use of the Software
+
+Inability to use the Software
+
+Loss of data
+
+Faulty anomaly detections or model predictions
+
+CONTACT
+
+For licensing rights, collaboration, or commercial usage:
+
+📧 mukunthtnbalaji@gmail.com
+
+📍 Chennai, India
