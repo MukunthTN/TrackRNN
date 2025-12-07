@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 
 
 import os
@@ -17,9 +17,7 @@ from sklearn.metrics import precision_recall_curve, auc, f1_score, precision_sco
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-# -------------------------
-# CLI / defaults
-# -------------------------
+
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--data", type=str, default="railway_realistic_dataset", help="dataset folder")
@@ -85,9 +83,7 @@ random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
 
-# -------------------------
-# Utils
-# -------------------------
+
 def find_audio_files(base_path):
     exts = ("*.wav", "*.flac", "*.ogg", "*.mp3")
     files = []
@@ -121,9 +117,7 @@ def build_sequences_from_audio(wave, past_len=PAST_SAMPLES, future_len=FUTURE_SA
         sequences.append((past.copy(), future.copy()))
     return sequences
 
-# -------------------------
-# Dataset
-# -------------------------
+
 class SequenceDataset(Dataset):
     def __init__(self, sequences):
         self.seq = sequences
@@ -159,9 +153,7 @@ def prepare_data(dataset_path):
     print(f"[prepare_data] files with seqs {files_with_seqs}/{len(files)}  total windows {len(sequences)}")
     return sequences
 
-# -------------------------
-# Model
-# -------------------------
+
 class GRUPredictor(nn.Module):
     def __init__(self, input_size=1, hidden_size=HIDDEN_SIZE, num_layers=NUM_LAYERS, future_len=FUTURE_SAMPLES):
         super().__init__()
@@ -178,9 +170,7 @@ class GRUPredictor(nn.Module):
         fut = self.fc(last)
         return fut
 
-# -------------------------
-# Loss helpers (MAE + small spectral)
-# -------------------------
+
 l1_loss = nn.L1Loss()
 
 def spectral_mag_loss(preds, targets, fft_n=FFT_N):
@@ -222,9 +212,7 @@ def compute_scores_on_loader(model, loader, fft_n=FFT_N):
     if len(maes) == 0: return np.array([]), np.array([])
     return np.concatenate(maes, axis=0), np.concatenate(sdfs, axis=0)
 
-# -------------------------
-# Training
-# -------------------------
+
 def train_model(model, train_loader, val_loader=None, epochs=EPOCHS):
     model.to(DEVICE)
     opt = torch.optim.Adam(model.parameters(), lr=LR, weight_decay=1e-6)
@@ -278,9 +266,7 @@ def train_model(model, train_loader, val_loader=None, epochs=EPOCHS):
         print(f"[train] Epoch {ep}/{epochs} - train_mae: {train_loss:.6f}" + (f" - val_mae: {val_loss:.6f}" if val_loss is not None else ""))
     return stats
 
-# -------------------------
-# plotting & top-window saving
-# -------------------------
+
 def save_top_windows(an_wave, positions, cas_scores, topk=SAVE_TOP, prefix="top"):
     if len(positions) == 0:
         return []
@@ -295,9 +281,7 @@ def save_top_windows(an_wave, positions, cas_scores, topk=SAVE_TOP, prefix="top"
         saved.append(fname)
     return saved
 
-# -------------------------
-# main flow
-# -------------------------
+
 def main():
     sequences = prepare_data(DATASET_PATH)
     if len(sequences) == 0:
@@ -503,3 +487,4 @@ if __name__ == "__main__":
         futures = torch.stack([item[1] for item in batch], dim=0)
         return pasts, futures
     main()
+
